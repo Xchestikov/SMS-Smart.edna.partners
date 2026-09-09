@@ -1,0 +1,1 @@
+# SMS-Smart.edna.partners
