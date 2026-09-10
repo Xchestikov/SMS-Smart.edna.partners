@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -5,153 +6,349 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SMS Smart — партнерское предложение edna</title>
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--accent:#5b5ce2;--line:#e7eaf0;--ok:#eaf8f0}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--text);line-height:1.45}
-.wrap{max-width:1080px;margin:0 auto;padding:42px 22px 70px}
-.hero{background:linear-gradient(135deg,#151936,#4547b9);color:white;border-radius:28px;padding:48px 52px;position:relative;overflow:hidden}
-.hero:after{content:"SMS";position:absolute;right:-15px;bottom:-65px;font-size:180px;font-weight:800;opacity:.08}
-.kicker{font-size:13px;text-transform:uppercase;letter-spacing:.12em;opacity:.75;font-weight:700}
-h1{font-size:46px;line-height:1.05;margin:14px 0 18px;max-width:700px}
-.hero p{font-size:19px;max-width:720px;opacity:.9;margin:0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
-.card h3{margin:0 0 8px;font-size:18px}.muted{color:var(--muted)}
-.num{font-size:32px;font-weight:800}.section{margin-top:34px}.section h2{font-size:28px;margin:0 0 15px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-ul{padding-left:20px;margin:12px 0}li{margin:9px 0}
-.price{font-size:36px;font-weight:800;margin:4px 0}
-table{width:100%;border-collapse:collapse;background:white;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
-th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line)}th{background:#f0f2f7;font-size:13px;color:var(--muted)}tr:last-child td{border-bottom:0}
-.highlight{background:var(--ok);border:1px solid #cdebd9;border-radius:18px;padding:20px}
-.cta{background:#171a2f;color:white;border-radius:22px;padding:30px;margin-top:30px}
-.cta h2{margin:0 0 8px}.cta p{margin:0;color:#d8dbea}
-.small{font-size:13px}.tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef0ff;color:#4447b7;font-weight:700;font-size:12px}
-.footer{margin-top:24px;color:var(--muted);font-size:12px}
-@media(max-width:760px){.hero{padding:34px 26px}h1{font-size:36px}.grid,.two{grid-template-columns:1fr}}
+:root{
+  --bg:#ffffff;
+  --surface:#f4f7f5;
+  --surface-2:#eefbf5;
+  --text:#111111;
+  --muted:#666b68;
+  --line:#dfe5e1;
+  --green:#00dc82;
+  --green-dark:#00a968;
+  --mint:#a6ffd6;
+  --shadow:0 18px 60px rgba(12,35,23,.08);
+  --radius:28px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,Manrope,"Segoe UI",Arial,sans-serif;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.page{overflow:hidden}
+.container{width:min(1180px,calc(100% - 48px));margin:0 auto}
+
+/* header */
+.header{padding:20px 0;border-bottom:1px solid rgba(17,17,17,.08);background:rgba(255,255,255,.94);backdrop-filter:blur(16px);position:sticky;top:0;z-index:20}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:11px;font-size:30px;font-weight:800;letter-spacing:-.05em;text-decoration:none}
+.logo-mark{width:33px;height:33px;position:relative;display:inline-block;background:linear-gradient(145deg,#00ef96 5%,#00d9a2 48%,#00c7b7 100%);border-radius:58% 42% 52% 48% / 44% 56% 44% 56%;transform:rotate(-18deg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
+.logo-mark:after{content:"";position:absolute;width:10px;height:10px;background:white;border-radius:50%;left:11px;top:11px;box-shadow:0 0 0 2px rgba(0,0,0,.03)}
+.header-note{font-size:14px;color:var(--muted)}
+.header-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;text-decoration:none;border:1px solid #151515;border-radius:999px;padding:11px 17px;transition:.2s ease}
+.header-link:hover{background:#111;color:#fff}
+.header-link span{font-size:18px;line-height:1;transition:transform .2s ease}.header-link:hover span{transform:translateX(3px)}
+
+/* hero */
+.hero{padding:74px 0 42px}
+.hero-shell{position:relative;min-height:520px;border-radius:38px;background:#111;color:#fff;overflow:hidden;padding:68px 64px;display:flex;align-items:flex-end;box-shadow:var(--shadow)}
+.hero-copy{position:relative;z-index:4;max-width:820px}
+.kicker{display:flex;align-items:center;gap:10px;margin-bottom:24px;font-size:14px;font-weight:650;color:rgba(255,255,255,.68);letter-spacing:.01em}
+.kicker:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 6px rgba(0,220,130,.14)}
+h1{font-size:clamp(48px,6vw,82px);line-height:.98;letter-spacing:-.055em;margin:0 0 28px;font-weight:720;max-width:900px}
+.hero p{margin:0;max-width:720px;font-size:20px;line-height:1.55;color:rgba(255,255,255,.72)}
+.hero-visual{position:absolute;inset:0;pointer-events:none}
+.orbit{position:absolute;border:1px solid rgba(255,255,255,.10);border-radius:50%}
+.orbit.o1{width:560px;height:560px;right:-125px;top:-110px}
+.orbit.o2{width:380px;height:380px;right:-35px;top:-18px}
+.orbit.o3{width:215px;height:215px;right:48px;top:66px}
+.pulse-shape{position:absolute;width:245px;height:245px;right:35px;top:48px;background:linear-gradient(145deg,#00f195,#00d7a2 50%,#00bfc1);border-radius:61% 39% 56% 44% / 41% 57% 43% 59%;transform:rotate(-18deg);box-shadow:0 0 80px rgba(0,225,143,.22);animation:beat 3.6s ease-in-out infinite}
+.pulse-shape:before{content:"";position:absolute;width:76px;height:76px;border-radius:50%;background:#111;left:85px;top:85px;box-shadow:0 0 0 22px rgba(17,17,17,.10)}
+.pulse-line{position:absolute;right:32px;bottom:42px;color:rgba(255,255,255,.08);font-size:110px;font-weight:800;letter-spacing:-.07em;white-space:nowrap}
+@keyframes beat{0%,100%{transform:rotate(-18deg) scale(1)}45%{transform:rotate(-18deg) scale(1.025)}55%{transform:rotate(-18deg) scale(.99)}}
+
+/* metrics */
+.metrics{padding:0 0 78px}
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #111;border-bottom:1px solid #111}
+.metric{padding:34px 32px 32px;min-height:176px;display:flex;flex-direction:column;justify-content:space-between}
+.metric+ .metric{border-left:1px solid #111}
+.metric-label{font-size:14px;color:var(--muted)}
+.metric-value{font-size:42px;line-height:1;font-weight:720;letter-spacing:-.045em;margin:22px 0 8px}
+.metric-sub{font-size:14px;color:var(--muted)}
+
+/* sections */
+.section{padding:82px 0}
+.section.compact{padding-top:50px}
+.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start;margin-bottom:42px}
+.section-index{font-size:13px;font-weight:700;color:var(--green-dark);letter-spacing:.08em;text-transform:uppercase;padding-top:9px}
+h2{font-size:clamp(36px,4.6vw,58px);line-height:1.03;letter-spacing:-.045em;margin:0;font-weight:710;max-width:760px}
+h3{font-size:24px;line-height:1.16;letter-spacing:-.025em;margin:0 0 13px;font-weight:690}
+p{margin-top:0}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.feature{position:relative;padding:32px 42px 38px 0;border-bottom:1px solid var(--line);min-height:190px}
+.feature:nth-child(odd){padding-right:52px;border-right:1px solid var(--line)}
+.feature:nth-child(even){padding-left:52px}
+.feature-no{font-size:12px;color:var(--green-dark);font-weight:800;margin-bottom:28px}
+.feature p{max-width:470px;margin:0;font-size:16px;line-height:1.65}
+
+.economy-band{background:var(--surface);border-radius:38px;padding:58px;margin-top:4px}
+.economy-intro{font-size:22px;line-height:1.55;max-width:960px;margin:0 0 44px}
+.economy-intro b{font-weight:720}
+.economy-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.economy-card{background:white;border-radius:25px;padding:30px;border:1px solid rgba(17,17,17,.06);min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
+.economy-card:nth-child(2){background:#111;color:#fff}
+.economy-card:nth-child(2) .muted{color:rgba(255,255,255,.62)}
+.price{font-size:clamp(35px,4vw,54px);line-height:1;font-weight:720;letter-spacing:-.05em;margin:28px 0 12px}
+
+.formula{background:#111;color:#fff;border-radius:34px;padding:44px 48px;display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start}
+.formula ul{list-style:none;padding:0;margin:0}
+.formula li{padding:18px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:16px;line-height:1.6}
+.formula li:first-child{padding-top:0}.formula li:last-child{border-bottom:0}
+.formula b{color:var(--mint);font-weight:670}
+.formula-note{font-size:14px;color:rgba(255,255,255,.57);line-height:1.65;padding-top:2px}
+.formula-note:before{content:"10%";display:block;color:#fff;font-size:82px;font-weight:730;line-height:.9;letter-spacing:-.06em;margin-bottom:24px}
+
+/* table */
+.table-wrap{border:1px solid var(--line);border-radius:28px;overflow:hidden;background:#fff}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:19px 24px;border-bottom:1px solid var(--line)}
+th{background:var(--surface);font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:750}
+td{font-size:16px}td:last-child{font-weight:680}
+tr:last-child td{border-bottom:0}
+tbody tr{transition:background .18s ease}tbody tr:hover{background:#f6fff9}
+
+.example-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.example-card{border-radius:30px;padding:38px;min-height:280px;background:var(--surface-2);position:relative;overflow:hidden}
+.example-card:nth-child(2){background:#dff9ec}
+.example-card:after{content:"SMS";position:absolute;right:-8px;bottom:-38px;font-size:106px;font-weight:800;color:rgba(0,169,104,.07);letter-spacing:-.08em}
+.example-card .price{position:relative;z-index:1;font-size:45px;margin:35px 0 20px}
+.example-card p{position:relative;z-index:1;max-width:460px;line-height:1.65;margin-bottom:0}
+
+.important{display:grid;grid-template-columns:.68fr 1.32fr;gap:55px;align-items:start}
+.important-title{position:sticky;top:110px}
+.important-list{border-top:1px solid #111}
+.important-item{display:grid;grid-template-columns:46px 1fr;gap:20px;padding:27px 0;border-bottom:1px solid var(--line);font-size:18px;line-height:1.55}
+.important-item span:first-child{width:30px;height:30px;background:var(--green);border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800}
+
+.cta-wrap{padding:86px 0 38px}
+.cta{position:relative;background:linear-gradient(115deg,#00e68d 0%,#00d7a1 50%,#22c6bc 100%);border-radius:40px;padding:62px;min-height:355px;overflow:hidden;color:#07150e;display:flex;align-items:flex-end}
+.cta:before,.cta:after{content:"";position:absolute;border:1px solid rgba(7,21,14,.14);border-radius:50%}
+.cta:before{width:460px;height:460px;right:-100px;top:-160px}.cta:after{width:280px;height:280px;right:-15px;top:-70px}
+.cta-copy{position:relative;z-index:1;max-width:780px}
+.cta h2{font-size:clamp(39px,5.3vw,66px);margin:0 0 20px}.cta p{font-size:19px;line-height:1.6;max-width:690px;margin:0;color:rgba(7,21,14,.70)}
+
+.footer{padding:34px 0 48px;color:var(--muted);font-size:13px}
+.footer-row{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:20px}
+
+@media(max-width:900px){
+  .hero-shell{padding:52px 38px;min-height:510px}.pulse-shape{width:190px;height:190px;right:-12px;top:33px}.pulse-shape:before{width:58px;height:58px;left:66px;top:66px}.pulse-line{font-size:82px}
+  .section-head{grid-template-columns:1fr;gap:14px}.section-index{padding-top:0}.formula{grid-template-columns:1fr;gap:36px}.important{grid-template-columns:1fr}.important-title{position:static}.economy-band{padding:42px}
+}
+@media(max-width:720px){
+  .container{width:min(100% - 28px,1180px)}.header{padding:14px 0}.header-note{display:none}.header-link{padding:9px 13px;font-size:12px}.logo{font-size:25px}.logo-mark{width:28px;height:28px}.logo-mark:after{width:8px;height:8px;left:10px;top:10px}
+  .hero{padding-top:34px}.hero-shell{border-radius:28px;padding:42px 25px 36px;min-height:500px;align-items:flex-end}.hero p{font-size:17px}.kicker{font-size:13px}.pulse-shape{width:155px;height:155px;right:-15px;top:24px}.pulse-shape:before{width:48px;height:48px;left:53px;top:53px}.orbit.o1{width:330px;height:330px;right:-150px;top:-70px}.orbit.o2{width:240px;height:240px;right:-90px;top:-20px}.orbit.o3{display:none}.pulse-line{font-size:58px;right:12px;bottom:18px}
+  .metrics{padding-bottom:52px}.metrics-grid{grid-template-columns:1fr}.metric{min-height:auto;padding:25px 4px}.metric+ .metric{border-left:0;border-top:1px solid #111}.metric-value{font-size:36px;margin-top:16px}
+  .section{padding:58px 0}.feature-grid,.economy-cards,.example-grid{grid-template-columns:1fr}.feature,.feature:nth-child(odd),.feature:nth-child(even){padding:28px 0;border-right:0}.economy-band{border-radius:28px;padding:29px 22px}.economy-intro{font-size:18px}.economy-card{min-height:185px}.formula{border-radius:28px;padding:32px 23px}.formula-note:before{font-size:65px}.table-wrap{border-radius:20px;overflow-x:auto}table{min-width:560px}.example-card{padding:30px 24px;min-height:250px}.important-item{font-size:16px;grid-template-columns:38px 1fr;gap:12px}.cta-wrap{padding-top:58px}.cta{border-radius:29px;padding:38px 24px;min-height:370px}.cta p{font-size:17px}.footer-row{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.pulse-shape{animation:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <section class="hero">
-    <div class="kicker">edna • партнерское предложение</div>
-    <h1>SMS Smart: быстрый способ добавить SMS клиентам</h1>
-    <p>SMS без регистрации собственного имени отправителя и шаблонов у операторов. Запуск и управление — в edna Pulse, вместе с другими каналами.</p>
-  </section>
-
-  <div class="grid">
-    <div class="card"><span class="tag">Быстрый старт</span><div class="num">≈ 2 дня</div><div class="muted">средний срок запуска</div></div>
-    <div class="card"><span class="tag">Абонентская плата</span><div class="num">от 1000 ₽</div><div class="muted">за подключение SMS-канала</div></div>
-    <div class="card"><span class="tag">Все SMS в одном месте</span><div class="num">1 кабинет</div><div class="muted">edna Pulse</div></div>
-  </div>
-
-  <section class="section">
-    <h2>Что получает клиент</h2>
-    <div class="two">
-      <div class="card">
-        <h3>Не нужно проходить регистрацию у операторов</h3>
-        <p class="muted">Используется готовое общее имя отправителя. Не требуется отдельно регистрировать имя и шаблоны.</p>
-      </div>
-      <div class="card">
-        <h3>SMS можно встроить в каскад</h3>
-        <p class="muted">Если сообщение не доставлено через WhatsApp или MAX, SMS Smart может выступить следующим каналом.</p>
-      </div>
-      <div class="card">
-        <h3>Подходит для разных сценариев</h3>
-        <p class="muted">Статусы заказов, доставка, подтверждения, напоминания, акции, промокоды и реактивация базы.</p>
-      </div>
-      <div class="card">
-        <h3>Одна лицензия — все SMS-каналы компании</h3>
-        <p class="muted">Запуск, рассылки и каскадные сценарии управляются в одном личном кабинете edna Pulse.</p>
-      </div>
+<div class="page">
+  <header class="header">
+    <div class="container header-row">
+      <a class="logo" href="#top" aria-label="edna">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>edna</span>
+      </a>
+      <div class="header-note">SMS Smart · партнерское предложение</div>
+      <a class="header-link" href="#economy">Экономика <span>→</span></a>
     </div>
-  </section>
+  </header>
 
-  <section class="section">
-    <h2>Экономика</h2>
-    <div class="highlight">
-      <b>Для партнера:</b> абонентская плата за лицензию — от 1 000 ₽/мес. Конечную стоимость лицензии для клиента партнер определяет самостоятельно. Вся сумма сверх 1 000 ₽ становится дополнительным агентским вознаграждением партнера. Дополнительно партнер получает 10% от стоимости SMS.
-    </div>
-    <div class="two" style="margin-top:18px">
-      <div class="card">
-        <div class="muted">Лицензия для клиента</div>
-        <div class="price">от 1 000 ₽/мес</div>
-        <div class="small muted">конечную стоимость определяет партнер</div>
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-visual" aria-hidden="true">
+            <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
+            <div class="pulse-shape"></div>
+            <div class="pulse-line">SMS SMART</div>
+          </div>
+          <div class="hero-copy">
+            <div class="kicker">edna · партнерское предложение</div>
+            <h1>SMS Smart: быстрый способ добавить SMS клиентам</h1>
+            <p>SMS без регистрации собственного имени отправителя и шаблонов у операторов. Запуск и управление — в edna Pulse, вместе с другими каналами.</p>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <div class="muted">Вознаграждение партнера</div>
-        <div class="price">10% + наценка</div>
-        <div class="small muted">10% от SMS + всё выше 1 000 ₽ по лицензии</div>
+    </section>
+
+    <section class="metrics">
+      <div class="container metrics-grid">
+        <div class="metric">
+          <div class="metric-label">Быстрый старт</div>
+          <div><div class="metric-value">≈ 2 дня</div><div class="metric-sub">средний срок запуска</div></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Абонентская плата</div>
+          <div><div class="metric-value">от 1000 ₽</div><div class="metric-sub">за подключение SMS-канала</div></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Все SMS в одном месте</div>
+          <div><div class="metric-value">1 кабинет</div><div class="metric-sub">edna Pulse</div></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <h2>Как формируется заработок партнера</h2>
-    <div class="card">
-      <ul>
-        <li><b>Лицензия:</b> закупочная стоимость — 1 000 ₽/мес; партнер сам устанавливает цену для клиента.</li>
-        <li><b>Наценка на лицензию:</b> вся сумма выше 1 000 ₽ становится дополнительным вознаграждением партнера.</li>
-        <li><b>SMS-трафик:</b> партнер получает 10% от стоимости SMS.</li>
-        <li><b>Итог:</b> 10% от стоимости SMS с НДС + (цена лицензии для клиента − 1 000 ₽).</li>
-      </ul>
-      <div class="small muted">В партнерском калькуляторе расчет выполняется по тарифам без НДС, затем начисляется НДС 22% на стоимость групп операторов.</div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>Стоимость SMS для клиента</h2>
-    <table>
-      <thead><tr><th>Оператор</th><th>Цена за SMS, без НДС</th></tr></thead>
-      <tbody>
-        <tr><td>Билайн</td><td>11,44 ₽</td></tr>
-        <tr><td>МТС</td><td>6,37 ₽</td></tr>
-        <tr><td>Мегафон, Скартел</td><td>10,24 ₽</td></tr>
-        <tr><td>Теле2</td><td>8,45 ₽</td></tr>
-        <tr><td>Мотив (Екатеринбург)</td><td>9,52 ₽</td></tr>
-        <tr><td>К-Телеком</td><td>9,52 ₽</td></tr>
-        <tr><td>КТК-Телеком</td><td>9,52 ₽</td></tr>
-        <tr><td>Сбербанк-Телеком</td><td>9,52 ₽</td></tr>
-        <tr><td>Вайнах Телеком</td><td>9,52 ₽</td></tr>
-        <tr><td>Прочие операторы РФ</td><td>9,52 ₽</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section">
-    <h2>Пример для бизнеса</h2>
-    <div class="two">
-      <div class="card">
-        <div class="muted">100 SMS в месяц</div>
-        <div class="price">≈ 637–1 144 ₽</div>
-        <p class="muted">стоимость трафика зависит от распределения по операторам. Плюс лицензия от 1 000 ₽/мес; конечную стоимость лицензии определяет партнер.</p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-index">01 · Возможности</div>
+          <h2>Что получает клиент</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-no">01</div>
+            <h3>Не нужно проходить регистрацию у операторов</h3>
+            <p class="muted">Используется готовое общее имя отправителя. Не требуется отдельно регистрировать имя и шаблоны.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-no">02</div>
+            <h3>SMS можно встроить в каскад</h3>
+            <p class="muted">Если сообщение не доставлено через WhatsApp или MAX, SMS Smart может выступить следующим каналом.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-no">03</div>
+            <h3>Подходит для разных сценариев</h3>
+            <p class="muted">Статусы заказов, доставка, подтверждения, напоминания, акции, промокоды и реактивация базы.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-no">04</div>
+            <h3>Одна лицензия — все SMS-каналы компании</h3>
+            <p class="muted">Запуск, рассылки и каскадные сценарии управляются в одном личном кабинете edna Pulse.</p>
+          </article>
+        </div>
       </div>
-      <div class="card">
-        <div class="muted">1 000 SMS в месяц</div>
-        <div class="price">≈ 6 370–11 440 ₽</div>
-        <p class="muted">ориентир по тарифам операторов; итог зависит от распределения трафика и рассчитывается в партнерском калькуляторе с учетом НДС.</p>
+    </section>
+
+    <section class="section" id="economy">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-index">02 · Партнеру</div>
+          <h2>Экономика</h2>
+        </div>
+        <div class="economy-band">
+          <p class="economy-intro"><b>Для партнера:</b> абонентская плата за лицензию — от 1 000 ₽/мес. Конечную стоимость лицензии для клиента партнер определяет самостоятельно. Вся сумма сверх 1 000 ₽ становится дополнительным агентским вознаграждением партнера. Дополнительно партнер получает 10% от стоимости SMS.</p>
+          <div class="economy-cards">
+            <div class="economy-card">
+              <div class="muted">Лицензия для клиента</div>
+              <div><div class="price">от 1 000 ₽/мес</div><div class="small muted">конечную стоимость определяет партнер</div></div>
+            </div>
+            <div class="economy-card">
+              <div class="muted">Вознаграждение партнера</div>
+              <div><div class="price">10% + наценка</div><div class="small muted">10% от SMS + всё выше 1 000 ₽ по лицензии</div></div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-index">03 · Формула</div>
+          <h2>Как формируется заработок партнера</h2>
+        </div>
+        <div class="formula">
+          <ul>
+            <li><b>Лицензия:</b> закупочная стоимость — 1 000 ₽/мес; партнер сам устанавливает цену для клиента.</li>
+            <li><b>Наценка на лицензию:</b> вся сумма выше 1 000 ₽ становится дополнительным вознаграждением партнера.</li>
+            <li><b>SMS-трафик:</b> партнер получает 10% от стоимости SMS.</li>
+            <li><b>Итог:</b> 10% от стоимости SMS с НДС + (цена лицензии для клиента − 1 000 ₽).</li>
+          </ul>
+          <div class="formula-note">В партнерском калькуляторе расчет выполняется по тарифам без НДС, затем начисляется НДС 22% на стоимость групп операторов.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-index">04 · Тарифы</div>
+          <h2>Стоимость SMS для клиента</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Оператор</th><th>Цена за SMS, без НДС</th></tr></thead>
+            <tbody>
+              <tr><td>Билайн</td><td>11,44 ₽</td></tr>
+              <tr><td>МТС</td><td>6,37 ₽</td></tr>
+              <tr><td>Мегафон, Скартел</td><td>10,24 ₽</td></tr>
+              <tr><td>Теле2</td><td>8,45 ₽</td></tr>
+              <tr><td>Мотив (Екатеринбург)</td><td>9,52 ₽</td></tr>
+              <tr><td>К-Телеком</td><td>9,52 ₽</td></tr>
+              <tr><td>КТК-Телеком</td><td>9,52 ₽</td></tr>
+              <tr><td>Сбербанк-Телеком</td><td>9,52 ₽</td></tr>
+              <tr><td>Вайнах Телеком</td><td>9,52 ₽</td></tr>
+              <tr><td>Прочие операторы РФ</td><td>9,52 ₽</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-index">05 · Пример</div>
+          <h2>Пример для бизнеса</h2>
+        </div>
+        <div class="example-grid">
+          <div class="example-card">
+            <div class="muted">100 SMS в месяц</div>
+            <div class="price">≈ 637–1 144 ₽</div>
+            <p class="muted">стоимость трафика зависит от распределения по операторам. Плюс лицензия от 1 000 ₽/мес; конечную стоимость лицензии определяет партнер.</p>
+          </div>
+          <div class="example-card">
+            <div class="muted">1 000 SMS в месяц</div>
+            <div class="price">≈ 6 370–11 440 ₽</div>
+            <p class="muted">ориентир по тарифам операторов; итог зависит от распределения трафика и рассчитывается в партнерском калькуляторе с учетом НДС.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container important">
+        <div class="important-title">
+          <div class="section-index">06 · Важно</div>
+          <h2>Что важно учесть</h2>
+        </div>
+        <div class="important-list">
+          <div class="important-item"><span>1</span><div>Получатель видит общее имя отправителя, а не бренд компании.</div></div>
+          <div class="important-item"><span>2</span><div>SMS Smart работает с операторами РФ; маршруты фиксированы и не настраиваются клиентом.</div></div>
+          <div class="important-item"><span>3</span><div>Если критично отображение бренда в поле «от кого», нужен тариф с регистрацией собственного имени отправителя.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-wrap">
+      <div class="container">
+        <div class="cta">
+          <div class="cta-copy">
+            <h2>Предлагаем протестировать на одном клиенте</h2>
+            <p>Можно начать с небольшого объема SMS, проверить экономику и сценарий, а затем масштабировать решение на остальных клиентов.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>edna · SMS Smart через edna Pulse</div>
+      <div>Информация подготовлена на основе коммерческих материалов edna, 2026.</div>
     </div>
-  </section>
-
-  <section class="section">
-    <h2>Что важно учесть</h2>
-    <div class="card">
-      <ul>
-        <li>Получатель видит общее имя отправителя, а не бренд компании.</li>
-        <li>SMS Smart работает с операторами РФ; маршруты фиксированы и не настраиваются клиентом.</li>
-        <li>Если критично отображение бренда в поле «от кого», нужен тариф с регистрацией собственного имени отправителя.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="cta">
-    <h2>Предлагаем протестировать на одном клиенте</h2>
-    <p>Можно начать с небольшого объема SMS, проверить экономику и сценарий, а затем масштабировать решение на остальных клиентов.</p>
-  </section>
-
-  <div class="footer">
-    edna • SMS Smart через edna Pulse • Информация подготовлена на основе коммерческих материалов edna, 2026.
-  </div>
+  </footer>
 </div>
 </body>
 </html>
